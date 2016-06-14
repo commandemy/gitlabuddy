@@ -39,5 +39,4 @@ describe Gitlabuddy::Project do
 
     mock_response
   end
-
 end

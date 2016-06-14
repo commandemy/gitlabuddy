@@ -26,9 +26,9 @@ describe Gitlabuddy::MergeRequest do
     mock_merge_requests = File.open(mock_path, 'rb').read
 
     create_stub_requests([
-      { url: 'https://gitlab.com/api/v3/projects', response: mock_response },
-      { url: 'https://gitlab.com/api/v3/projects/4/merge_requests', response: mock_merge_requests }
-    ])
+                           { url: 'https://gitlab.com/api/v3/projects', response: mock_response },
+                           { url: 'https://gitlab.com/api/v3/projects/4/merge_requests', response: mock_merge_requests }
+                         ])
 
     mock_merge_requests
   end

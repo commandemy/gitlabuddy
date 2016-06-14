@@ -8,13 +8,11 @@ module Gitlabuddy
       merge_requests = []
 
       Gitlabuddy::Project.all.each do |project|
-
         JSON.parse(
           Gitlabuddy::Request.new("https://gitlab.com/api/v3/projects/#{project['id']}/merge_requests")
             .send
             .body
         ).each { |request| merge_requests.push request if request['state'] == 'opened' }
-
       end
 
       puts merge_requests.to_json
