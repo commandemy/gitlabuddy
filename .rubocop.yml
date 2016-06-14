@@ -1,0 +1,7 @@
+---
+LineLength:
+  Enabled: false
+Documentation:
+  Enabled: false
+MethodLength:
+  Enabled: false

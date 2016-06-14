@@ -1,0 +1,4 @@
+# Gitlabuddy GEM
+
+1. export GITLAB_PRIVATE_TOKEN=<YOUR_GITLAB_TOKEN>
+2. 
