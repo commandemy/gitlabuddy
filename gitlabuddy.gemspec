@@ -13,8 +13,8 @@ Gem::Specification.new do |s|
     'lib/gitlabuddy/merge_request.rb',
     'lib/gitlabuddy/cli.rb'
   ]
-  s.homepage    = 'http://rubygems.org/gems/gitlabuddy'
+  s.homepage    = 'https://rubygems.org/gems/gitlabuddy'
   s.license     = 'MIT'
-  s.executables = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.executables = 'bin/gitlabuddy'
   s.add_dependency 'thor', '~> 0.19.1'
 end
