@@ -15,6 +15,6 @@ Gem::Specification.new do |s|
   ]
   s.homepage    = 'https://rubygems.org/gems/gitlabuddy'
   s.license     = 'MIT'
-  s.executables = 'bin/gitlabuddy'
+  s.executables = 'gitlabuddy'
   s.add_dependency 'thor', '~> 0.19.1'
 end
