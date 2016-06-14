@@ -2,6 +2,7 @@ module Gitlabuddy
   class MergeRequest
     require 'gitlabuddy/request'
     require 'gitlabuddy/project'
+    require 'json'
 
     def self.all
       merge_requests = []
@@ -16,6 +17,7 @@ module Gitlabuddy
 
       end
 
+      puts merge_requests.to_json
       merge_requests.to_json
     end
   end

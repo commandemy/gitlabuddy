@@ -1,13 +1,17 @@
 module Gitlabuddy
   class Project
     require 'gitlabuddy/request'
+    require 'json'
 
     def self.all
-      JSON.parse(
+      projects = JSON.parse(
         Gitlabuddy::Request.new('https://gitlab.com/api/v3/projects')
           .send
           .body
       )
+
+      puts projects
+      projects
     end
 
     def self.cookbook?(project_id)
@@ -17,7 +21,10 @@ module Gitlabuddy
           .body
       )
 
-      file['file_name'] ? true : false
+      is_cookbook = file['file_name'] ? true : false
+
+      puts is_cookbook
+      is_cookbook
     end
   end
 end

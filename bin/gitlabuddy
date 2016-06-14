@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+# ./bin/gitlabuddy
+# puts 'My executable works!'
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require 'gitlabuddy'
+
+Gitlabuddy::Cli.start(ARGV)
+
+# ./bin/gitlabuddy:8:in `<main>': uninitialized constant Gitlabbuddy (NameError)
+
+=begin
+$ bundle exec bin/gitlabuddy
+bundler: failed to load command: bin/gitlabuddy (bin/gitlabuddy)
+LoadError: cannot load such file -- gitlabuddy
+  bin/gitlabuddy:6:in `require'
+  bin/gitlabuddy:6:in `<top (required)>'
+=end
