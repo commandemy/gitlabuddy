@@ -14,10 +14,10 @@ module Gitlabuddy
       Gitlabuddy::MergeRequest.all
     end
 
-    desc 'cookbook PROJECT_ID', 'This will check if a certain project is a cookbook'
-    def cookbook(project_id)
+    desc 'project_type PROJECT_ID', 'This will return the project type of a certain project'
+    def project_type(project_id)
       require 'gitlabuddy/project'
-      Gitlabuddy::Project.cookbook?(project_id)
+      Gitlabuddy::Project.project_type(project_id)
     end
   end
 end

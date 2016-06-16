@@ -14,17 +14,24 @@ module Gitlabuddy
       projects
     end
 
-    def self.cookbook?(project_id)
-      file = JSON.parse(
-        Gitlabuddy::Request.new("https://gitlab.com/api/v3/projects/#{project_id}/repository/files?file_path=metadata.rb&ref=master")
+    def self.project_type(project_id)
+      files = JSON.parse(
+        Gitlabuddy::Request.new("https://gitlab.com/api/v3/projects/#{project_id}/repository/tree")
           .send
           .body
       )
 
-      is_cookbook = file['file_name'] ? true : false
+      type = case files.to_s
+             when /Gemfile/
+               'ruby'
+             when /metadata.rb/
+               'cookbook'
+             else
+               'unknown'
+             end
 
-      puts is_cookbook
-      is_cookbook
+      puts type
+      type
     end
   end
 end

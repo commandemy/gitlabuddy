@@ -19,21 +19,28 @@ describe Gitlabuddy::Project do
       project_id = 4
       setup_mocks('spec/responses/project_is_cookbook.json', project_id)
 
-      expect(Gitlabuddy::Project.cookbook?(project_id)).to eq true
+      expect(Gitlabuddy::Project.project_type(project_id)).to eq 'cookbook'
     end
 
     it 'should know if the project is a normal ruby project' do
       project_id = 6
-      setup_mocks('spec/responses/project_is_not_cookbook.json', project_id)
+      setup_mocks('spec/responses/project_is_ruby.json', project_id)
 
-      expect(Gitlabuddy::Project.cookbook?(project_id)).to eq false
+      expect(Gitlabuddy::Project.project_type(project_id)).to eq 'ruby'
+    end
+
+    it 'should know if the project is unknown' do
+      project_id = 8
+      setup_mocks('spec/responses/project_is_unknown.json', project_id)
+
+      expect(Gitlabuddy::Project.project_type(project_id)).to eq 'unknown'
     end
   end
 
   def setup_mocks(mock_path, project_id)
     mock_response = File.open(mock_path, 'rb').read
 
-    stub_request(:get, "https://gitlab.com/api/v3/projects/#{project_id}/repository/files?file_path=metadata.rb&ref=master")
+    stub_request(:get, "https://gitlab.com/api/v3/projects/#{project_id}/repository/tree")
       .with(headers: { 'Accept' => '*/*', 'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Host' => 'gitlab.com', 'Private-Token' => (ENV['GITLAB_PRIVATE_TOKEN']).to_s, 'User-Agent' => 'Ruby' })
       .to_return(status: 200, body: mock_response, headers: {})
 
