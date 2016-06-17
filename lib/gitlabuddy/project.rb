@@ -10,7 +10,7 @@ module Gitlabuddy
           .body
       )
 
-      projects
+      projects.to_json
     end
 
     def self.project_type(project_id)
