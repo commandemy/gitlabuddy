@@ -15,7 +15,6 @@ module Gitlabuddy
         ).each { |request| merge_requests.push request if request['state'] == 'opened' }
       end
 
-      puts merge_requests.to_json
       merge_requests.to_json
     end
   end

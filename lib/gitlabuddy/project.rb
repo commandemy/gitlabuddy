@@ -10,7 +10,6 @@ module Gitlabuddy
           .body
       )
 
-      puts projects
       projects
     end
 
@@ -30,7 +29,6 @@ module Gitlabuddy
                'unknown'
              end
 
-      puts type
       type
     end
   end
