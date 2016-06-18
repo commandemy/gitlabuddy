@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'gitlabuddy'
   s.version     = '0.0.4'
-  s.date        = '2016-06-14'
+  s.date        = '2016-06-18'
   s.summary     = 'Gitlabuddy!'
   s.description = 'A gem to interact with GitLab'
   s.authors     = ['Infralovers']

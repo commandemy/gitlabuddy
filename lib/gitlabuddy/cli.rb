@@ -19,5 +19,11 @@ module Gitlabuddy
       require 'gitlabuddy/project'
       puts Gitlabuddy::Project.project_type(project_id)
     end
+
+    desc 'projects_dump PROJECT_ID', 'This will return the project type of a certain project'
+    def projects_dump
+      require 'gitlabuddy/project'
+      puts Gitlabuddy::Project.dump
+    end
   end
 end

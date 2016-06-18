@@ -31,5 +31,32 @@ module Gitlabuddy
 
       type
     end
+
+    def self.branches(project_id)
+      Gitlabuddy::Request.new("https://gitlab.com/api/v3/projects/#{project_id}/repository/branches")
+        .send
+        .body
+    end
+
+    def self.dump
+      projects = JSON.parse(
+        Gitlabuddy::Request.new('https://gitlab.com/api/v3/projects')
+          .send
+          .body
+      )
+
+      dump = []
+
+      projects.each do |project|
+        dump.push project.merge!(custom:
+        {
+          project_type: project_type(project['id']),
+          merge_requests: JSON.parse(Gitlabuddy::MergeRequest.by_project(project['id'])),
+          branches: JSON.parse(branches(project['id']))
+        })
+      end
+
+      dump.to_json
+    end
   end
 end
